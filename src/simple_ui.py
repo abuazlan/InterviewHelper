@@ -48,13 +48,12 @@ full_chat_gpt_answer = get_text_area("", size=(APPLICATION_WIDTH, 45))
 
 layout = [
     [sg.Text("Press R to start recording", size=(int(APPLICATION_WIDTH * 0.8), 2)), record_status_button],
-    [sg.Text("Press A to analyze the recording")],
     [analyzed_text_label],
     [sg.Text("Short answer:")],
     [quick_chat_gpt_answer],
     [sg.Text("Full answer:")],
     [full_chat_gpt_answer],  # This will take more space due to expand settings
-    [sg.Button("Cancel", size=(10, 1), button_color=("white", "red"), expand_x=True)],  # Moved to the bottom and centered
+    [sg.Button("Cancel", size=(10, 1), button_color=("white", "red"), expand_x=False)],  # Moved to the bottom and centered
 ]
 
 # Adjusting the full_chat_gpt_answer to expand

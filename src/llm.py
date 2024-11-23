@@ -12,7 +12,7 @@ You will receive an audio transcription of the question. It may not be complete.
 """
 SHORTER_INSTRACT = "Concisely respond, limiting your answer to 70 words."
 LONGER_INSTRACT = (
-    "Before answering, take a deep breath and think one step at a time. Believe the answer in no more than 150 words."
+    "Before answering, take a deep breath and think one step at a time. Believe the answer in no more than 250 words. make shorter sentences with some uhm sounds and grammatical mistakes. I will read out these lines and it should not sound like I m plainly reading out"
 )
 
 
