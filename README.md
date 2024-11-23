@@ -4,7 +4,7 @@
 ![](static/interview_gif.gif)
 
 ### Architecture:
-![](static/logo.png)
+![img.png](img.png)![](static/logo.png)
 
 ### Usage:
 ```sh
