@@ -1,5 +1,5 @@
 INTERVIEW_POSTION = "Java Architect with DevOps, Microservices and Springboot hands-on experience"
-OPENAI_API_KEY = "sk-proj-xHNVjtyElfx3FDGgkMB3T3BlbkFJWhK9oaVDYPv5fXUJIgmC"
+OPENAI_API_KEY = "sk-proj-xHNVjtyElfx3FDGgkMB3T3BlbkFJWhK9oaVDYPv5fXUJIgmCAb1d"
 
 OUTPUT_FILE_NAME = "out.wav"  # audio file name.
 
