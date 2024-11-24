@@ -8,11 +8,15 @@ openai.api_key = OPENAI_API_KEY
 
 
 SYSTEM_PROMPT = f"""You are interviewing for a {INTERVIEW_POSTION} position.
-You will receive an audio transcription of the question. It may not be complete. You need to understand the question and write an answer to it.\n
+You will receive an audio transcription of the question. It may not be complete. 
+You need to understand the question and write an answer to it.\n
 """
 SHORTER_INSTRACT = "Concisely respond, limiting your answer to 70 words."
 LONGER_INSTRACT = (
-    "Before answering, take a deep breath and think one step at a time. Believe the answer in no more than 250 words. make shorter sentences with some uhm sounds and grammatical mistakes. I will read out these lines and it should not sound like I m plainly reading out"
+    "Before answering, take a deep breath and think one step at a time. "
+    "Believe the answer in no more than 250 words in simple plain english. "
+    "make shorter sentences with some uhm sounds and grammatical mistakes. "
+    "I will read out these lines and it should not sound like I m plainly reading out"
 )
 
 
@@ -65,7 +69,7 @@ def generate_answer(transcript: str, short_answer: bool = True, temperature: flo
         system_prompt = SYSTEM_PROMPT + LONGER_INSTRACT
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4o-mini",  # gpt-4o-mini
+            model="gpt-4o-turbo",  # gpt-4o-mini
             temperature=temperature,
             messages=[
                 {"role": "system", "content": system_prompt},

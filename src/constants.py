@@ -1,4 +1,5 @@
-INTERVIEW_POSTION = "Java Architect with DevOps, Microservices and Springboot hands-on experience"
+INTERVIEW_POSTION = "SAP BI Architect along with BusinessObjects and Administration Troubleshooting"
+OPENAI_API_KEY = "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"
 # OPENAI_API_KEY = "demo"
 
 OUTPUT_FILE_NAME = "out.wav"  # audio file name.
