@@ -69,7 +69,7 @@ def generate_answer(transcript: str, short_answer: bool = True, temperature: flo
         system_prompt = SYSTEM_PROMPT + LONGER_INSTRACT
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4o-turbo",  # gpt-4o-mini
+            model="gpt-4o-mini",  # gpt-4o-mini
             temperature=temperature,
             messages=[
                 {"role": "system", "content": system_prompt},
