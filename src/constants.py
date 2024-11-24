@@ -1,5 +1,4 @@
 INTERVIEW_POSTION = "SAP BI Architect along with BusinessObjects and Administration Troubleshooting"
-# OPENAI_API_KEY = "demo"
 
 OUTPUT_FILE_NAME = "out.wav"  # audio file name.
 
