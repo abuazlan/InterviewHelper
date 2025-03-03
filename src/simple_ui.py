@@ -7,6 +7,7 @@ from loguru import logger
 from src import audio, llm
 from src.constants import APPLICATION_WIDTH, OFF_IMAGE, ON_IMAGE
 
+
 def get_text_area(text: str, size: tuple) -> sg.Text:
     """
     Create a text area widget with the given text and size.
@@ -23,6 +24,7 @@ def get_text_area(text: str, size: tuple) -> sg.Text:
         size=size,
         background_color=sg.theme_background_color(),
         text_color="white",
+        font=("Helvetica", 11)
     )
 
 
@@ -42,9 +44,8 @@ record_status_button = sg.Button(
     metadata=BtnInfo(),
 )
 analyzed_text_label = get_text_area("", size=(APPLICATION_WIDTH, 2))
-quick_chat_gpt_answer = get_text_area("", size=(APPLICATION_WIDTH, 5))
-full_chat_gpt_answer = get_text_area("", size=(APPLICATION_WIDTH, 45))
-
+quick_chat_gpt_answer = get_text_area("", size=(APPLICATION_WIDTH, 5), )
+full_chat_gpt_answer = get_text_area("", size=(APPLICATION_WIDTH, 55))
 
 layout = [
     [sg.Text("Press R to start recording", size=(int(APPLICATION_WIDTH * 0.8), 2)), record_status_button],
@@ -58,7 +59,7 @@ layout = [
 
 # Adjusting the full_chat_gpt_answer to expand
 
-WINDOW = sg.Window("Interview Assistant", layout, size=(600, 800), return_keyboard_events=True, use_default_focus=False)
+WINDOW = sg.Window("Interview Assistant", layout, size=(650, 1000), return_keyboard_events=True, use_default_focus=False)
 
 
 def background_recording_loop() -> str:
@@ -78,6 +79,7 @@ def background_recording_loop() -> str:
     # After saving the audio
     audio.save_audio_file_pyaudio(audio_data, "recorded_audio.wav")
     return "recorded_audio.wav"
+
 
 while True:
     event, values = WINDOW.read()
@@ -102,21 +104,20 @@ while True:
         analyzed_text_label.update("Transcribing...")
         WINDOW.perform_long_operation(lambda: llm.transcribe_audio(recorded_audio_path), "-WHISPER COMPLETED-")
 
+
     elif event == "-WHISPER COMPLETED-":
         audio_transcript = values["-WHISPER COMPLETED-"]
         analyzed_text_label.update(audio_transcript)
-
         # Generate quick answer:
         quick_chat_gpt_answer.update("ChatGPT is generating a quick answer...")
         WINDOW.perform_long_operation(
-            lambda: llm.generate_answer(audio_transcript, short_answer=True, temperature=0),
+            lambda: llm.generate_answer(audio_transcript, short_answer=True, temperature=0, callback=lambda text: quick_chat_gpt_answer.update(text)),
             "-CHAT_GPT SHORT ANSWER-",
         )
-
         # Generate full answer:
         full_chat_gpt_answer.update("ChatGPT is generating a detailed answer...")
         WINDOW.perform_long_operation(
-            lambda: llm.generate_answer(audio_transcript, short_answer=False, temperature=0.7),
+            lambda: llm.generate_answer(audio_transcript, short_answer=False, temperature=0.1, callback=lambda text: full_chat_gpt_answer.update(text)),
             "-CHAT_GPT LONG ANSWER-",
         )
 
