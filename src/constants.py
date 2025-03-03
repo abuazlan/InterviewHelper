@@ -1,6 +1,4 @@
 INTERVIEW_POSTION = "SAP BO Administrator and Architect"
-OPENAI_API_KEY = ""
-# OPENAI_API_KEY = "demo"
 
 OUTPUT_FILE_NAME = "out.wav"  # audio file name.
 
