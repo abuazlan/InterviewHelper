@@ -1,5 +1,5 @@
 INTERVIEW_POSTION = "SAP BO Administrator and Architect"
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = ""
 # OPENAI_API_KEY = "demo"
 
 OUTPUT_FILE_NAME = "out.wav"  # audio file name.
